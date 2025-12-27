@@ -16,9 +16,7 @@
       scroll-behavior: smooth;
     }
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-    }
+    h1, h2 { font-family: 'Playfair Display', serif; }
 
     section {
       width: 100%;
@@ -31,7 +29,6 @@
       box-sizing: border-box;
       text-align: center;
       position: relative;
-      z-index: 2;
     }
 
     .top-text {
@@ -41,19 +38,13 @@
       text-align: center;
       padding: 20px 10px 0 10px;
       position: relative;
-      z-index: 10;
+      z-index: 20;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-    }
+    .hero h1 { font-size: 3rem; }
+    .hero p { font-size: 1.2rem; margin-top: 10px; }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-
-    img, video {
+    img {
       max-width: 90%;
       max-height: 70%;
       border-radius: 15px;
@@ -63,11 +54,13 @@
 
     .caption {
       font-size: 1rem;
+      color: #4a2c2a;
       margin-top: 5px;
     }
 
     .notes {
       max-width: 700px;
+      margin: auto;
       font-size: 1.1rem;
       line-height: 1.8;
     }
@@ -75,6 +68,13 @@
     .final {
       background: #f8c8dc;
       border-radius: 40px 40px 0 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .hearts {
@@ -85,12 +85,13 @@
       height: 100%;
       pointer-events: none;
       overflow: hidden;
-      z-index: 1;
+      z-index: 0;
     }
 
     .heart {
       position: absolute;
-      opacity: 0.85;
+      font-size: 20px;
+      opacity: 0.8;
       animation: float linear infinite;
     }
 
@@ -99,209 +100,147 @@
       50% { opacity: 1; }
       100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
-
-    .tap-hint {
-      position: fixed;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #d94f7c;
-      z-index: 20;
-      opacity: 0.8;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      25% { transform: scale(1.05); }
-      50% { transform: scale(1.1); }
-      75% { transform: scale(1.05); }
-    }
-
-    .final h2, .final .notes {
-      animation: heartbeat 2s infinite;
-    }
-
-    /* Password screen */
-    #lock-screen {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, #fde2e4, #fff);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      text-align: center;
-    }
-
-    #lock-screen h1 {
-      font-family: 'Playfair Display', serif;
-      color: #d94f7c;
-      margin-bottom: 10px;
-    }
-
-    #lock-screen p {
-      font-size: 0.95rem;
-      opacity: 0.8;
-      margin-bottom: 15px;
-    }
-
-    #lock-screen input {
-      padding: 10px 15px;
-      border-radius: 20px;
-      border: 1px solid #d94f7c;
-      outline: none;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    #lock-screen button {
-      margin-top: 15px;
-      padding: 10px 25px;
-      border-radius: 25px;
-      border: none;
-      background: #d94f7c;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    #lock-screen .error {
-      color: red;
-      font-size: 0.85rem;
-      margin-top: 10px;
-    }
-
   </style>
 </head>
 <body>
 
-  <!-- PASSWORD SCREEN -->
-  <div id="lock-screen">
-    <h1>For my baby ❤️</h1>
-    <p>Hint: awel yom et2blna feh</p>
-    <input type="password" id="passwordInput" placeholder="Enter password">
-    <button onclick="unlock()">Enter 💖</button>
-    <div class="error" id="errorMsg"></div>
+<!-- Floating Hearts -->
+<div class="hearts" id="hearts-container"></div>
+
+<!-- Top Custom Text -->
+<div class="top-text">💌 To my baby 💌</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>for my love ❤️</h1>
+  <p>Bhbk awi bgd , 2olt aamlk suprise to start ur year with w yarab kol sana afdl maaki ❤️.</p>
+</section>
+
+<!-- PHOTOS -->
+<section>
+  <img src="photos/photo1.jpg" alt="Our first photo">
+  <p class="caption">Our first time meeting eachother and our first photo ❤️</p>
+</section>
+<section>
+  <img src="photos/photo2.jpg" alt="Sahel">
+  <p class="caption">Sahel 🏖️</p>
+</section>
+<section>
+  <img src="photos/photo3.jpg" alt="Sahel">
+  <p class="caption">Sahel brdoo 😍</p>
+</section>
+<section>
+  <img src="photos/photo4.jpg" alt="7amati meeting yousra">
+  <p class="caption">7amati meeting yousra 🌅</p>
+</section>
+<section>
+  <img src="photos/photo5.jpg" alt="Kont metwtar">
+  <p class="caption">Kont metwtar awiiii 🕯️</p>
+</section>
+<section>
+  <img src="photos/photo6.jpg" alt="Watching the moon">
+  <p class="caption">Lazem brdo nw2f ntfrg aala el 2amar di shwia 😍</p>
+</section>
+<section>
+  <img src="photos/photo7.jpg" alt="Bhbkkkk">
+  <p class="caption">Bhbkkkkkk awiiiiiii ❤️</p>
+</section>
+<section>
+  <img src="photos/photo8.jpg" alt="Home">
+  <p class="caption">Home (shklk hlw awiiii) ❤️</p>
+</section>
+<section>
+  <img src="photos/photo9.jpg" alt="Tired baby">
+  <p class="caption">Tired babyyyyyy 🚗</p>
+</section>
+<section>
+  <img src="photos/photo10.jpg" alt="YVL">
+  <p class="caption">YVL </p>
+</section>
+<section>
+  <img src="photos/photo11.jpg" alt="Photobooth">
+  <p class="caption">Our photobooth photos ❤️</p>
+</section>
+<section>
+  <img src="photos/photo12.jpg" alt="Lulties birthday">
+  <p class="caption">Lulties birthdayyyy 😛</p>
+</section>
+<section>
+  <img src="photos/photo13.jpg" alt="Promised you something">
+  <p class="caption">Promied you something 💍</p>
+</section>
+<section>
+  <img src="photos/photo14.jpg" alt="Photobooth again">
+  <p class="caption">photobooth againnn 🎂</p>
+</section>
+<section>
+  <img src="photos/photo15.jpg" alt="Our fav pose">
+  <p class="caption">Our fav pose 🤝</p>
+</section>
+
+<!-- VIDEOS (Use YouTube embed if needed) -->
+<section>
+  <video autoplay loop muted playsinline controls src="videos/video1.mp4"></video>
+</section>
+<section>
+  <video autoplay loop muted playsinline controls src="videos/video2.mp4"></video>
+</section>
+<section>
+  <video autoplay loop muted playsinline controls src="videos/video3.mp4"></video>
+</section>
+
+<!-- SHORT TEXTS -->
+<section>
+  <h2>7agat aaizk t3rfiha 💌</h2>
+  <div class="notes">
+    <p>• Ana bhbk gedan.</p>
+    <p>• kol yom maaki hlw.</p>
+    <p>• i cant wait to marry you.</p>
+    <p>• i will always choose you.</p>
+    <p>• i will never ever ever leave you.</p>
   </div>
+</section>
 
-  <!-- MAIN CONTENT -->
-  <div id="main-content" style="display:none;">
+<!-- FINAL BIG MESSAGE -->
+<section class="final">
+  <h2>BHBK ❤️</h2>
+  <p class="notes">
+    My love,<br><br>
+ Happy new year baby , ana bgd mabsoot awi eni maaki w hakml maaki ana mesh haro7 7eta mahma 7asal w im always next to you this year bgd kanet a7la sana f 7iati kefia eni 3rftk w 7abetek el sana di w hafdl a7bk kol sana wara sana wara sana w hafdl maaki kol senin 7iati , w bgd el sana di 7ases en it taught us 7agat ketera 7ata law kan feh 5ena2 w nakad w za3al keter its okay aashan ehna were still together w ana wallahi mesh aaiez a3ish la7za wa7da maa 7ad 8erek enti 7ata law bnt5n2 keter w nakad keter ana i want you and only you ana bhbk awi awi awiiiiiiiiii w enti bgd agml 7aga fl denia w yarab 3o2bal kol sana w7na maa baad w dayman gamb baad w bn7b baad yarab ana kol sania bt3di mn kol yom b7bk aktr w aktr w aktr w ana aaizek t3rfi eni gambik dayman w dayman hafdl a7bk w hafdl a5tark enti w bas
+  </p>
+</section>
 
-    <!-- Floating Hearts & Roses -->
-    <div class="hearts" id="hearts-container"></div>
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="love-song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-    <!-- Tap hint for iPhone -->
-    <div class="tap-hint">Tap anywhere ❤️</div>
+<script>
+  // Password prompt
+  let correctPasswords = ["23/6","23-6","236","26 june","26-june","26/6"];
+  let entered = prompt("Enter the password (hint: awel yom et2blna feh):");
+  while(!correctPasswords.includes(entered.trim().toLowerCase())){
+    entered = prompt("Wrong! Try again. Hint: awel yom et2blna feh");
+  }
 
-    <!-- Top Text -->
-    <div class="top-text">💌 To my baby 💌</div>
+  // Music volume
+  const audio = document.getElementById("bg-music");
+  audio.volume = 0.5;
+  audio.play().catch(err => console.log("Autoplay blocked:", err));
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>for my love ❤️</h1>
-      <p>Bhbk awi bgd , 2olt aamlk suprise to start ur year with w yarab kol sana afdl maaki ❤️.</p>
-    </section>
-
-    <!-- PHOTOS (15) -->
-    <section><img src="photos/photo1.jpg"><p class="caption">Our first time meeting eachother and our first photo ❤️</p></section>
-    <section><img src="photos/photo2.jpg"><p class="caption">Sahel 🏖️</p></section>
-    <section><img src="photos/photo3.jpg"><p class="caption">Sahel brdoo 😍</p></section>
-    <section><img src="photos/photo4.jpg"><p class="caption">7amati meeting yousra 🌅</p></section>
-    <section><img src="photos/photo5.jpg"><p class="caption">Kont metwtar awiiii 🕯️</p></section>
-    <section><img src="photos/photo6.jpg"><p class="caption">Lazem brdo nw2f ntfrg aala el 2amar di shwia 😍</p></section>
-    <section><img src="photos/photo7.jpg"><p class="caption">Bhbkkkkkk awiiiiiii ❤️</p></section>
-    <section><img src="photos/photo8.jpg"><p class="caption">Home (shklk hlw awiiii) ❤️</p></section>
-    <section><img src="photos/photo9.jpg"><p class="caption">Tired babyyyyyy 🚗</p></section>
-    <section><img src="photos/photo10.jpg"><p class="caption">YVL </p></section>
-    <section><img src="photos/photo11.jpg"><p class="caption">Our photobooth photos ❤️</p></section>
-    <section><img src="photos/photo12.jpg"><p class="caption">Lulties birthdayyyy 😛</p></section>
-    <section><img src="photos/photo13.jpg"><p class="caption">Promied you something  💍</p></section>
-    <section><img src="photos/photo14.jpg"><p class="caption">photobooth againnn 🎂</p></section>
-    <section><img src="photos/photo15.jpg"><p class="caption">Our fav pose  🤝</p></section>
-
-    <!-- VIDEOS (3) -->
-    <section><video autoplay loop muted playsinline src="videos/video1.mp4"></video></section>
-    <section><video autoplay loop muted playsinline src="videos/video2.mp4"></video></section>
-    <section><video autoplay loop muted playsinline src="videos/video3.mp4"></video></section>
-
-    <!-- SHORT TEXTS -->
-    <section>
-      <h2>7agat aaizk t3rfiha 💌</h2>
-      <div class="notes">
-        <p>• Ana bhbk gedan.</p>
-        <p>• kol yom maaki hlw.</p>
-        <p>• i cant wait to marry you.</p>
-        <p>• i will always choose you.</p>
-        <p>• i will never ever ever leave you.</p>
-      </div>
-    </section>
-
-    <!-- FINAL BIG MESSAGE -->
-    <section class="final">
-      <h2>BHBK ❤️</h2>
-      <p class="notes">
-        My love,<br><br>
-        Happy new year baby , ana bgd mabsoot awi eni maaki w hakml maaki ana mesh haro7 7eta mahma 7asal w im always next to you this year bgd kanet a7la sana f 7iati kefia eni 3rftk w 7abetek el sana di w hafdl a7bk kol sana wara sana wara sana w hafdl maaki kol senin 7iati , w bgd el sana di 7ases en it taught us 7agat ketera 7ata law kan feh 5ena2 w nakad w za3al keter its okay aashan ehna were still together w ana wallahi mesh aaiez a3ish la7za wa7da maa 7ad 8erek enti 7ata law bnt5n2 keter w nakad keter ana i want you and only you ana bhbk awi awi awiiiiiiiiii w enti bgd agml 7aga fl denia w yarab 3o2bal kol sana w7na maa baad w dayman gamb baad w bn7b baad yarab ana kol sania bt3di mn kol yom b7bk aktr w aktr w aktr w ana aaizek t3rfi eni gambik dayman w dayman hafdl a7bk w hafdl a5tark enti w bas
-      </p>
-    </section>
-
-    <!-- MUSIC -->
-    <audio id="bg-music" loop preload="auto">
-      <source src="love-song.mp3" type="audio/mpeg">
-    </audio>
-
-  </div> <!-- END MAIN CONTENT -->
-
-  <!-- SCRIPT -->
-  <script>
-    const audio = document.getElementById("bg-music");
-    audio.volume = 0.6;
-
-    // iPhone-safe music start
-    const startMusic = () => {
-      audio.play().catch(() => {});
-      document.removeEventListener("click", startMusic);
-      document.removeEventListener("touchstart", startMusic);
-    };
-    document.addEventListener("click", startMusic);
-    document.addEventListener("touchstart", startMusic);
-
-    // Floating hearts + roses
-    const container = document.getElementById('hearts-container');
-    const emojis = ['❤️','💖','💕','💗','🌹','🌹','🌹'];
-
-    for (let i = 0; i < 40; i++) {
-      const el = document.createElement('div');
-      el.className = 'heart';
-      el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.fontSize = (18 + Math.random() * 30) + 'px';
-      el.style.animationDuration = (6 + Math.random() * 10) + 's';
-      container.appendChild(el);
-    }
-
-    // PASSWORD FUNCTION
-    const passwords = ["23/6","23-6","236","23 june","23june","23-June","23June"];
-
-    function unlock() {
-      const input = document.getElementById("passwordInput").value.toLowerCase().replace(/\s+/g,'');
-      const error = document.getElementById("errorMsg");
-
-      // Normalize input for comparison
-      const normalizedPasswords = passwords.map(p => p.toLowerCase().replace(/\s+/g,''));
-      if (normalizedPasswords.includes(input)) {
-        document.getElementById("lock-screen").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-      } else {
-        error.textContent = "Try again ya ro7i 💔";
-      }
-    }
-
-    document.getElementById("passwordInput").addEventListener("keydown", e => {
-      if (e.key === "Enter") unlock();
-    });
-  </script>
+  // Floating hearts
+  const heartsContainer = document.getElementById('hearts-container');
+  const heartEmojis = ['💖','💗','💝','💞','💕','❤️','🌹'];
+  for(let i=0; i<30; i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (5 + Math.random()*10) + 's';
+    heart.style.fontSize = (15 + Math.random()*30) + 'px';
+    heartsContainer.appendChild(heart);
+  }
+</script>
 </body>
 </html>
